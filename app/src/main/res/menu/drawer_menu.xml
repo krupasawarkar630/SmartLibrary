@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_drawer_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_drawer_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_drawer_books"
+            android:icon="@drawable/ic_book"
+            android:title="Available Books" />
+        <item
+            android:id="@+id/nav_drawer_issued"
+            android:icon="@drawable/ic_my_books"
+            android:title="Issued Books" />
+        <item
+            android:id="@+id/nav_drawer_pending"
+            android:icon="@drawable/ic_pending"
+            android:title="Pending Requests" />
+        <item
+            android:id="@+id/nav_drawer_history"
+            android:icon="@drawable/ic_history"
+            android:title="History" />
+        <item
+            android:id="@+id/nav_drawer_learning"
+            android:icon="@drawable/ic_learning"
+            android:title="Learning Points" />
+        <item
+            android:id="@+id/nav_drawer_locations"
+            android:icon="@drawable/ic_location"
+            android:title="Library Locations" />
+        <item
+            android:id="@+id/nav_drawer_quiz"
+            android:icon="@drawable/ic_quiz"
+            android:title="Library Quiz" />
+    </group>
+
+    <item android:title="Feedback &amp; Settings">
+        <menu>
+            <item
+                android:id="@+id/nav_drawer_feedback"
+                android:icon="@drawable/ic_feedback"
+                android:title="Feedback" />
+            <item
+                android:id="@+id/nav_drawer_notifications"
+                android:icon="@drawable/ic_notification"
+                android:title="Notifications" />
+            <item
+                android:id="@+id/nav_drawer_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Settings" />
+        </menu>
+    </item>
+
+    <item android:title="App Info">
+        <menu>
+            <item
+                android:id="@+id/nav_drawer_about"
+                android:icon="@drawable/ic_info"
+                android:title="About Us" />
+            <item
+                android:id="@+id/nav_drawer_contact"
+                android:icon="@drawable/ic_phone"
+                android:title="Contact Us" />
+            <item
+                android:id="@+id/nav_drawer_rate"
+                android:icon="@drawable/ic_rate"
+                android:title="Rate Us" />
+            <item
+                android:id="@+id/nav_drawer_share"
+                android:icon="@drawable/ic_share"
+                android:title="Share App" />
+            <item
+                android:id="@+id/nav_drawer_logout"
+                android:icon="@drawable/ic_logout"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Ivory Library Theme: Primary Palette -->
+    <color name="primary">#3F3A63</color> <!-- Deep Indigo -->
+    <color name="primary_dark">#2B2745</color>
+    <color name="primary_light">#554E83</color>
+    
+    <!-- Accent Palette: Muted Amber -->
+    <color name="accent">#C79A55</color>
+    <color name="accent_dark">#A67C3F</color>
+    <color name="accent_light">#DAB883</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#7DA28C</color> <!-- Soft Sage Green -->
+    <color name="success_bg">#E8EFEA</color>
+    <color name="warning">#C79A55</color> <!-- Muted Amber -->
+    <color name="warning_bg">#F4ECE1</color>
+    <color name="danger">#B76D68</color> <!-- Muted Terracotta -->
+    <color name="danger_bg">#F5EAE9</color>
+
+    <!-- Neutral Colors - Ivory Library -->
+    <color name="background">#F7F3EA</color> <!-- Warm Ivory -->
+    <color name="surface">#FFFDF8</color> <!-- Soft White / Ivory Card -->
+    <color name="text_primary">#24221F</color> <!-- Deep Ink -->
+    <color name="text_secondary">#77716A</color> <!-- Warm Gray -->
+    <color name="text_muted">#A39E96</color>
+    <color name="divider">#E7E0D4</color> <!-- Warm Beige -->
+    <color name="card_stroke">#E7E0D4</color>
+    
+    <!-- White / Transparent -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

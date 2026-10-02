@@ -1,0 +1,58 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid"
+      }
+    },
+    
+    "books": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).child('active').val() == true",
+      ".indexOn": ["category", "updatedAt", "availableCopies"]
+    },
+    
+    "libraries": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).child('active').val() == true"
+    },
+    
+    "quizzes": {
+      ".read": "auth != null",
+      ".write": "auth != null && root.child('admins').child(auth.uid).child('active').val() == true"
+    },
+    
+    "bookRequests": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["userId", "status"]
+    },
+    
+    "issuedBooks": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["userId", "status"]
+    },
+    
+    "libraryVisits": {
+      ".read": "auth != null && root.child('admins').child(auth.uid).child('active').val() == true",
+      ".write": "auth != null",
+      ".indexOn": ["userId", "libraryId"]
+    },
+    
+    "availabilityAlerts": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      ".indexOn": ["userId", "bookId"]
+    },
+
+    "admins": {
+      ".read": "auth != null",
+      ".write": "false"
+    }
+  }
+}

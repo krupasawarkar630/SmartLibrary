@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Smart Library</string>
+    <string name="google_web_client_id">YOUR_WEB_CLIENT_ID_HERE</string>
+    
+    <!-- Auth -->
+    <string name="login_title">Smart Library System</string>
+    <string name="login_subtitle">Sign in to access your digital library</string>
+    <string name="email_hint">Email Address</string>
+    <string name="password_hint">Password</string>
+    <string name="full_name_hint">Full Name</string>
+    <string name="role_hint">Select Role</string>
+    <string name="btn_login">Sign In</string>
+    <string name="btn_register">Create Account</string>
+    <string name="prompt_no_account">Don\'t have an account? Sign up</string>
+    <string name="prompt_have_account">Already have an account? Sign in</string>
+    <string name="demo_credentials_student">Quick Fill: Student (student@library.com)</string>
+    <string name="demo_credentials_admin">Quick Fill: Admin (admin@library.com)</string>
+    
+    <!-- Navigation -->
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="nav_catalog">Catalog</string>
+    <string name="nav_my_books">My Loans</string>
+    <string name="nav_admin">Admin</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Catalog -->
+    <string name="search_hint">Search books by title, author, or category…</string>
+    <string name="category_all">All</string>
+    <string name="category_cs">Computer Science</string>
+    <string name="category_fiction">Fiction</string>
+    <string name="category_science">Science</string>
+    <string name="category_business">Business</string>
+    
+    <!-- Book Detail -->
+    <string name="btn_borrow">Borrow Book</string>
+    <string name="btn_return">Return Book</string>
+    <string name="copies_available">%1$d of %2$d Available</string>
+    <string name="out_of_stock">Out of Stock</string>
+    
+    <!-- Admin -->
+    <string name="admin_title">Admin Management</string>
+    <string name="btn_add_book">Add New Book</string>
+    <string name="total_books_stat">Total Books</string>
+    <string name="active_loans_stat">Active Loans</string>
+    <string name="total_members_stat">Members</string>
+    
+    <!-- Add Book -->
+    <string name="add_book_title">Add New Book</string>
+    <string name="book_title_hint">Book Title</string>
+    <string name="book_author_hint">Author Name</string>
+    <string name="book_category_hint">Category (e.g. Computer Science)</string>
+    <string name="book_isbn_hint">ISBN Number</string>
+    <string name="book_copies_hint">Total Copies</string>
+    <string name="book_desc_hint">Book Summary / Description</string>
+    <string name="btn_save_book">Save Book to Library</string>
+</resources>

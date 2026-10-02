@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- SEARCH & FILTER HEADER -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/surface"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:strokeColor="@color/card_stroke">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchViewBooks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Search by title, author, category or ISBN..." />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- HORIZONTAL CATEGORY FILTERS -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCategoryChips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <!-- BOOKS RECYCLERVIEW & STATES -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBookCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <include
+            android:id="@+id/layoutLoading"
+            layout="@layout/layout_loading" />
+
+        <include
+            android:id="@+id/layoutEmpty"
+            layout="@layout/layout_empty_state" />
+
+        <include
+            android:id="@+id/layoutError"
+            layout="@layout/layout_error_state" />
+    </FrameLayout>
+
+</LinearLayout>

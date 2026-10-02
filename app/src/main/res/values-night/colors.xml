@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Palette: Dark Mode -->
+    <color name="primary">#38BDF8</color>
+    <color name="primary_dark">#0F172A</color>
+    <color name="primary_light">#1E293B</color>
+    
+    <!-- Accent Palette -->
+    <color name="accent">#38BDF8</color>
+    <color name="accent_dark">#0284C7</color>
+    <color name="accent_light">#7DD3FC</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#34D399</color>
+    <color name="success_bg">#064E3B</color>
+    <color name="warning">#FBBF24</color>
+    <color name="warning_bg">#78350F</color>
+    <color name="danger">#F87171</color>
+    <color name="danger_bg">#7F1D1D</color>
+
+    <!-- Neutral Colors -->
+    <color name="background">#0F172A</color>
+    <color name="surface">#1E293B</color>
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_muted">#64748B</color>
+    <color name="divider">#334155</color>
+    <color name="card_stroke">#475569</color>
+    
+    <!-- White / Transparent -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>
