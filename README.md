@@ -15,26 +15,33 @@ This application provides a seamless, editorial-style interface ("Ivory Library"
 
 ```mermaid
 graph TD
-    subaxis ["Client Side"]
-    A[Android App \n Java + XML] -->|Retrofit HTTP| B(AI Node.js Backend)
-    A -->|Firebase SDK| C(Firebase Authentication)
-    A -->|Firebase SDK| D(Firebase Realtime Database)
+    subgraph Client ["Client Side"]
+        A[Android App <br> Java + XML]
     end
     
-    subaxis ["Server Side"]
-    B -->|API Request| E[OpenAI API]
-    B -->|Firebase Admin| D
+    subgraph Backend ["Server Side"]
+        B(AI Node.js Backend)
+        E[OpenAI API]
     end
+    
+    subgraph Database ["Firebase"]
+        C(Firebase Authentication)
+        D(Firebase Realtime Database)
+    end
+
+    A -->|Retrofit HTTP| B
+    A -->|Firebase SDK| C
+    A -->|Firebase SDK| D
+    B -->|API Request| E
+    B -->|Firebase Admin| D
     
     classDef client fill:#3F3A63,stroke:#3F3A63,stroke-width:2px,color:#fff;
     classDef server fill:#C79A55,stroke:#C79A55,stroke-width:2px,color:#fff;
     classDef db fill:#7DA28C,stroke:#7DA28C,stroke-width:2px,color:#fff;
     
     class A client;
-    class B server;
-    class C db;
-    class D db;
-    class E server;
+    class B,E server;
+    class C,D db;
 ```
 
 ## 🛠 Technology Stack
