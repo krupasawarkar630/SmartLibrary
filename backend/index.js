@@ -26,10 +26,12 @@ const mockResponses = [
 const { OpenAI } = require('openai');
 
 const openai = new OpenAI({
-  apiKey: process.env.AI_API_KEY || 'dummy_key',
+  apiKey: process.env.OPENAI_API_KEY || process.env.AI_API_KEY || 'dummy_key',
+  baseURL: process.env.OPENAI_BASE_URL || undefined,
 });
 
-const isAiEnabled = process.env.AI_API_KEY && process.env.AI_API_KEY.length > 10;
+const actualKey = process.env.OPENAI_API_KEY || process.env.AI_API_KEY || '';
+const isAiEnabled = actualKey.length > 10;
 
 // AI Mock Endpoint
 app.post('/api/ai/chat', async (req, res) => {

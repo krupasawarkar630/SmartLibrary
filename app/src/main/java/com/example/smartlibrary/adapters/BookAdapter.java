@@ -37,6 +37,14 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemBookBinding binding = ItemBookBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        
+        if (parent.getLayoutManager() instanceof androidx.recyclerview.widget.GridLayoutManager) {
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) binding.getRoot().getLayoutParams();
+            params.width = ViewGroup.LayoutParams.MATCH_PARENT;
+            params.setMargins(16, 16, 16, 40);
+            binding.getRoot().setLayoutParams(params);
+        }
+        
         return new BookViewHolder(binding);
     }
 
