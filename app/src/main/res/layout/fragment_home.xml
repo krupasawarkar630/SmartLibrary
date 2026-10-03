@@ -267,7 +267,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="4dp"
                     android:gravity="center">
                     <TextView
                         android:id="@+id/tvStatIssuedCount"
@@ -278,12 +279,15 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Borrowed"
                         android:textColor="@color/text_secondary"
-                        android:textSize="10sp"
+                        android:textSize="9sp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:maxLines="1"
                         android:textStyle="bold"
                         android:textAllCaps="true" />
                 </LinearLayout>
@@ -310,7 +314,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="4dp"
                     android:gravity="center">
                     <TextView
                         android:id="@+id/tvStatPendingCount"
@@ -321,12 +326,15 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Requests"
                         android:textColor="@color/text_secondary"
-                        android:textSize="10sp"
+                        android:textSize="9sp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:maxLines="1"
                         android:textStyle="bold"
                         android:textAllCaps="true" />
                 </LinearLayout>
@@ -353,7 +361,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp"
+                    android:paddingVertical="12dp"
+                    android:paddingHorizontal="4dp"
                     android:gravity="center">
                     <TextView
                         android:id="@+id/tvStatLocationsCount"
@@ -364,12 +373,15 @@
                         android:textSize="20sp"
                         android:textStyle="bold" />
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Branches"
                         android:textColor="@color/text_secondary"
-                        android:textSize="10sp"
+                        android:textSize="9sp"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:maxLines="1"
                         android:textStyle="bold"
                         android:textAllCaps="true" />
                 </LinearLayout>
