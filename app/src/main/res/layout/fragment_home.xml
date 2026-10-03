@@ -115,9 +115,10 @@
             android:id="@+id/promoSlider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:clipToPadding="false"
-            android:paddingHorizontal="24dp"
+            android:paddingHorizontal="20dp"
+            android:paddingBottom="16dp"
             android:scrollbars="none">
 
             <LinearLayout
@@ -128,46 +129,51 @@
                 <!-- BANNER 1: AI ASSISTANT -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/bannerAiAssistant"
-                    android:layout_width="300dp"
-                    android:layout_height="140dp"
+                    android:layout_width="310dp"
+                    android:layout_height="160dp"
                     android:layout_marginEnd="16dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/primary"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp">
                     
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="20dp">
+                        android:background="@drawable/bg_gradient_ai"
+                        android:padding="24dp">
                         
                         <TextView
                             android:id="@+id/tvBanner1Tag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="NEW FEATURE"
+                            android:text="✨ NEW FEATURE"
                             android:textColor="#A8D8D6"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.1"
                             android:textStyle="bold"
                             android:textAllCaps="true" />
                             
                         <TextView
-                            android:layout_width="180dp"
+                            android:layout_width="190dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tvBanner1Tag"
-                            android:layout_marginTop="8dp"
-                            android:text="Meet your new AI Librarian"
+                            android:layout_marginTop="12dp"
+                            android:text="Meet your new\nAI Librarian"
                             android:textColor="@color/surface"
-                            android:textSize="18sp"
+                            android:lineSpacingExtra="4dp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                             
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="-10dp"
+                            android:layout_marginBottom="-10dp"
+                            android:alpha="0.8"
                             android:src="@drawable/ic_user_logo"
                             app:tint="#A8D8D6" />
                     </RelativeLayout>
@@ -176,46 +182,51 @@
                 <!-- BANNER 2: NEW ARRIVALS -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/bannerNewArrivals"
-                    android:layout_width="300dp"
-                    android:layout_height="140dp"
+                    android:layout_width="310dp"
+                    android:layout_height="160dp"
                     android:layout_marginEnd="16dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="@color/accent"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp">
                     
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="20dp">
+                        android:background="@drawable/bg_gradient_arrivals"
+                        android:padding="24dp">
                         
                         <TextView
                             android:id="@+id/tvBanner2Tag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="WEEKLY HIGHLIGHTS"
+                            android:text="🔥 WEEKLY HIGHLIGHTS"
                             android:textColor="#FFE5C4"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.1"
                             android:textStyle="bold"
                             android:textAllCaps="true" />
                             
                         <TextView
-                            android:layout_width="180dp"
+                            android:layout_width="190dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tvBanner2Tag"
-                            android:layout_marginTop="8dp"
-                            android:text="Explore this week's most read books"
+                            android:layout_marginTop="12dp"
+                            android:text="Explore this week's\ntop reads"
                             android:textColor="@color/surface"
-                            android:textSize="18sp"
+                            android:lineSpacingExtra="4dp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                             
                         <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="-10dp"
+                            android:layout_marginBottom="-10dp"
+                            android:alpha="0.8"
                             android:src="@drawable/ic_book"
                             app:tint="#FFE5C4" />
                     </RelativeLayout>
@@ -224,46 +235,51 @@
                 <!-- BANNER 3: DIGITAL PASS -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/bannerDigitalPass"
-                    android:layout_width="300dp"
-                    android:layout_height="140dp"
+                    android:layout_width="310dp"
+                    android:layout_height="160dp"
                     android:layout_marginEnd="8dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    app:cardBackgroundColor="#3D8068"
-                    app:cardCornerRadius="16dp"
-                    app:cardElevation="0dp">
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="6dp">
                     
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:padding="20dp">
+                        android:background="@drawable/bg_gradient_scanner"
+                        android:padding="24dp">
                         
                         <TextView
                             android:id="@+id/tvBanner3Tag"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="QUICK ACCESS"
+                            android:text="📱 QUICK ACCESS"
                             android:textColor="#A2DBC2"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
+                            android:letterSpacing="0.1"
                             android:textStyle="bold"
                             android:textAllCaps="true" />
                             
                         <TextView
-                            android:layout_width="180dp"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tvBanner3Tag"
-                            android:layout_marginTop="8dp"
-                            android:text="Scan QR codes for instant checkout"
+                            android:layout_marginTop="12dp"
+                            android:text="Scan QR for\ninstant checkout"
                             android:textColor="@color/surface"
-                            android:textSize="18sp"
+                            android:lineSpacingExtra="4dp"
+                            android:textSize="22sp"
                             android:textStyle="bold" />
                             
                         <ImageView
-                            android:layout_width="64dp"
-                            android:layout_height="64dp"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentBottom="true"
+                            android:layout_marginEnd="-10dp"
+                            android:layout_marginBottom="-10dp"
+                            android:alpha="0.8"
                             android:src="@drawable/ic_qr_scan"
                             app:tint="#A2DBC2" />
                     </RelativeLayout>
