@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         
         com.example.smartlibrary.database.FirebaseManager.getInstance(this).seedFirebaseData();
 
+        binding.fabAiAssistant.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, AiAssistantActivity.class));
+        });
+
         // Bottom Navigation Listener
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();

@@ -46,6 +46,21 @@
             app:itemTextColor="@color/bottom_nav_item_color"
             app:menu="@menu/bottom_nav_menu" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAiAssistant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="80dp"
+            android:contentDescription="AI Assistant"
+            android:src="@drawable/ic_user_logo"
+            app:tint="@null"
+            app:backgroundTint="@color/primary"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:fabSize="normal" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
