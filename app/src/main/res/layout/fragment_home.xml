@@ -112,6 +112,7 @@
 
         <!-- PROMO SLIDER -->
         <HorizontalScrollView
+            android:id="@+id/promoSlider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -222,6 +223,7 @@
 
                 <!-- BANNER 3: DIGITAL PASS -->
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bannerDigitalPass"
                     android:layout_width="300dp"
                     android:layout_height="140dp"
                     android:layout_marginEnd="8dp"

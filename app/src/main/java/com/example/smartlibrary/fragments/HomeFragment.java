@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,6 +42,9 @@ public class HomeFragment extends Fragment {
     private ValueEventListener issuedBooksListener;
     private ValueEventListener requestsListener;
     private ValueEventListener librariesListener;
+    
+    private final Handler sliderHandler = new Handler(Looper.getMainLooper());
+    private Runnable sliderRunnable;
 
     @Nullable
     @Override
@@ -100,13 +105,68 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        binding.cardAiAssistant.setOnClickListener(v -> {
-            startActivity(new Intent(requireContext(), com.example.smartlibrary.activities.AiAssistantActivity.class));
-        });
+        if (binding.bannerAiAssistant != null) {
+            binding.bannerAiAssistant.setOnClickListener(v -> {
+                startActivity(new Intent(requireContext(), com.example.smartlibrary.activities.AiAssistantActivity.class));
+            });
+        }
+        
+        if (binding.bannerNewArrivals != null) {
+            binding.bannerNewArrivals.setOnClickListener(v -> {
+                if (getActivity() instanceof MainActivity) {
+                    ((MainActivity) getActivity()).loadFragment(new BookListFragment(), "Available Books");
+                }
+            });
+        }
+        
+        if (binding.bannerDigitalPass != null) {
+            binding.bannerDigitalPass.setOnClickListener(v -> {
+                startActivity(new Intent(requireContext(), com.example.smartlibrary.activities.QrScannerActivity.class));
+            });
+        }
 
         setupCategories();
         setupRecentBooks();
         loadDashboardStats();
+        setupAutoSlider();
+    }
+    
+    private void setupAutoSlider() {
+        if (binding.promoSlider == null) return;
+        
+        sliderRunnable = new Runnable() {
+            int scrollPos = 0;
+            boolean scrollingRight = true;
+            
+            @Override
+            public void run() {
+                if (binding == null || binding.promoSlider == null) return;
+                
+                View child = binding.promoSlider.getChildAt(0);
+                if (child == null) return;
+                
+                int maxScroll = child.getWidth() - binding.promoSlider.getWidth();
+                int step = binding.promoSlider.getWidth() - 100; // Scroll by approximately one card width
+                
+                if (scrollingRight) {
+                    scrollPos += step;
+                    if (scrollPos >= maxScroll) {
+                        scrollPos = maxScroll;
+                        scrollingRight = false; // Reverse direction
+                    }
+                } else {
+                    scrollPos -= step;
+                    if (scrollPos <= 0) {
+                        scrollPos = 0;
+                        scrollingRight = true;
+                    }
+                }
+                
+                binding.promoSlider.smoothScrollTo(scrollPos, 0);
+                sliderHandler.postDelayed(this, 3000); // Trigger every 3 seconds
+            }
+        };
+        sliderHandler.postDelayed(sliderRunnable, 3000);
     }
 
     private void setupCategories() {
@@ -269,6 +329,9 @@ public class HomeFragment extends Fragment {
                 mDatabase.child("bookRequests").orderByChild("userId").equalTo(userId).removeEventListener(requestsListener);
             }
             if (librariesListener != null) mDatabase.child("libraries").removeEventListener(librariesListener);
+        }
+        if (sliderRunnable != null) {
+            sliderHandler.removeCallbacks(sliderRunnable);
         }
         binding = null;
     }
