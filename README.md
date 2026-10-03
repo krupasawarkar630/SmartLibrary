@@ -44,7 +44,7 @@ Welcome to the **Smart Library Management System** — a seamless, editorial-sty
 
 ## 🏗 Architecture Diagram
 
-Our architecture separates concerns by isolating AI credentials securely on the backend while allowing the Android client to remain fast and fluid.
+Our architecture leverages a direct connection to the Gemini AI API for intelligent chat, while using Firebase for secure database syncing.
 
 ```mermaid
 graph TD
@@ -52,28 +52,25 @@ graph TD
         A[Android App <br> Java + XML]
     end
     
-    subgraph Backend ["Server Side"]
-        B(AI Node.js Backend)
-        E[OpenAI / OpenRouter API]
-    end
-    
     subgraph Database ["Firebase"]
         C(Firebase Authentication)
         D(Firebase Realtime Database)
     end
+    
+    subgraph AI ["Google AI Services"]
+        E[Gemini 1.5 Flash API]
+    end
 
-    A -->|Retrofit HTTP| B
     A -->|Firebase SDK| C
     A -->|Firebase SDK| D
-    B -->|API Request| E
-    B -->|Firebase Admin| D
+    A -->|Retrofit HTTP| E
     
-    classDef client fill:#3F3A63,stroke:#3F3A63,stroke-width:2px,color:#fff;
-    classDef server fill:#C79A55,stroke:#C79A55,stroke-width:2px,color:#fff;
-    classDef db fill:#7DA28C,stroke:#7DA28C,stroke-width:2px,color:#fff;
+    classDef client fill:#176B67,stroke:#176B67,stroke-width:2px,color:#fff;
+    classDef ai fill:#3D8068,stroke:#3D8068,stroke-width:2px,color:#fff;
+    classDef db fill:#C58A3A,stroke:#C58A3A,stroke-width:2px,color:#fff;
     
     class A client;
-    class B,E server;
+    class E ai;
     class C,D db;
 ```
 
@@ -90,9 +87,8 @@ graph TD
 - **Backend-as-a-Service**: Firebase Realtime Database
 - **Authentication**: Firebase Auth (Email/Password & Google Sign-In)
 
-### AI Microservice
-- **Runtime**: Node.js, Express.js
-- **Intelligence**: OpenAI API SDK (Compatible with OpenRouter)
+### AI Integration
+- **Intelligence**: Google Gemini 1.5 Flash API (Direct REST Integration)
 
 ---
 
@@ -103,33 +99,26 @@ graph TD
 2. Go to [Firebase Console](https://console.firebase.google.com/), create a project, and register this Android app (`com.example.smartlibrary`).
 3. Download the `google-services.json` file and place it in the `app/` directory.
 4. Enable **Authentication** (Email & Google) and **Realtime Database** in Firebase.
-5. Click **Run** in Android Studio to build the app onto your device or emulator.
 
-### 2. AI Backend Setup
-The AI feature requires the local Node.js server to run so that your secret API keys are never exposed in the Android APK.
+### 2. AI & Environment Variables Setup (.env)
+The AI assistant runs directly in the app, but you must supply your own Google Gemini API key.
 
+1. Open `app/src/main/java/com/example/smartlibrary/ai/AiRepository.java`.
+2. Find the line: `private static final String API_KEY = "YOUR_GEMINI_API_KEY_HERE";`
+3. Replace `"YOUR_GEMINI_API_KEY_HERE"` with your actual API key from [Google AI Studio](https://aistudio.google.com/).
+
+> **⚠️ Security Warning:** Do NOT commit your API key to GitHub. It has been purposefully omitted from the repository.
+
+*(Optional Backend Setup)*
+If you are planning to expand the backend folder (e.g. for Supabase):
+1. Navigate to the `backend/` directory.
+2. Copy `.env.example` to a new file named `.env`.
+3. Fill in your credentials:
 ```bash
-# Navigate to the backend folder
-cd backend
-
-# Install dependencies
-npm install
+cp .env.example .env
 ```
 
-Create a `.env` file inside the `backend` folder and add your AI API Key:
-```env
-# Use either OpenAI or OpenRouter
-OPENAI_BASE_URL=https://openrouter.ai/api/v1  # Remove this line if using standard OpenAI
-OPENAI_API_KEY=sk-your-api-key-here
-AI_MODEL=openai/gpt-3.5-turbo
-```
-
-Start the server:
-```bash
-npm start
-```
-
-> **⚠️ Important Device Note**: If you are testing the app on a physical Android device, you must update the `BASE_URL` in `AiRepository.java` from `http://10.0.2.2:3000/` to your computer's local Wi-Fi IP address (e.g., `http://192.168.1.5:3000/`).
+Click **Run** in Android Studio to build the app onto your device or emulator!
 
 ---
 
@@ -137,13 +126,13 @@ npm start
 
 The application strictly follows a custom design system to maintain a professional, academic, and calm environment.
 
-- **Primary Background**: Warm Ivory `#F7F3EA`
-- **Card Background**: Soft White / Ivory `#FFFDF8`
-- **Primary Text**: Deep Ink `#24221F`
-- **Secondary Text**: Warm Gray `#77716A`
-- **Primary Accent**: Deep Indigo `#3F3A63` (Buttons, Active Nav)
-- **Secondary Accent**: Muted Amber `#C79A55` (Highlights, Warnings)
-- **Success State**: Soft Sage Green `#7DA28C`
+- **Primary Background**: Warm Ivory `#F7F5F0`
+- **Card Background**: Crisp White `#FFFFFF`
+- **Primary Text**: Deep Forest `#202625`
+- **Secondary Text**: Muted Teal `#66706E`
+- **Primary Accent**: Deep Teal `#176B67` (Buttons, Active Nav)
+- **Secondary Accent**: Warm Gold `#C58A3A` (Highlights, Warnings)
+- **Success State**: Sage Green `#3D8068`
 
 ---
 
