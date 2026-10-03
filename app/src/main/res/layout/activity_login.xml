@@ -23,7 +23,7 @@
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:contentDescription="Library Logo"
-                android:src="@drawable/ic_library_logo"
+                android:src="@drawable/ic_user_logo"
                 app:tint="@color/primary" />
 
             <TextView

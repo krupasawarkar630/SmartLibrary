@@ -14,59 +14,70 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AiRepository {
 
-    private static final String BASE_URL = "http://10.0.2.2:3000/"; // Update to your backend URL
-    private AiApiService apiService;
+    private static final String BASE_URL = "https://generativelanguage.googleapis.com/";
+    // TODO: Add your Gemini API Key here before running locally! Do NOT commit it to GitHub.
+    private static final String API_KEY = "YOUR_GEMINI_API_KEY_HERE";
+    private GeminiApiService apiService;
 
     public AiRepository() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-        apiService = retrofit.create(AiApiService.class);
+        apiService = retrofit.create(GeminiApiService.class);
     }
 
     public LiveData<AiChatResponse> sendMessage(String message, String conversationId) {
         MutableLiveData<AiChatResponse> result = new MutableLiveData<>();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         
-        if (user == null) {
-            AiChatResponse errorResponse = new AiChatResponse();
-            errorResponse.setSuccess(false);
-            errorResponse.setMessage("User not authenticated.");
-            result.setValue(errorResponse);
-            return result;
-        }
+        com.google.gson.JsonObject part = new com.google.gson.JsonObject();
+        part.addProperty("text", message);
+        
+        com.google.gson.JsonArray parts = new com.google.gson.JsonArray();
+        parts.add(part);
+        
+        com.google.gson.JsonObject content = new com.google.gson.JsonObject();
+        content.add("parts", parts);
+        
+        com.google.gson.JsonArray contents = new com.google.gson.JsonArray();
+        contents.add(content);
+        
+        com.google.gson.JsonObject requestBody = new com.google.gson.JsonObject();
+        requestBody.add("contents", contents);
 
-        user.getIdToken(true).addOnSuccessListener(getTokenResult -> {
-            String token = getTokenResult.getToken();
-            AiChatRequest request = new AiChatRequest(message, conversationId);
-            
-            apiService.sendMessage("Bearer " + token, request).enqueue(new Callback<AiChatResponse>() {
-                @Override
-                public void onResponse(Call<AiChatResponse> call, Response<AiChatResponse> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        result.setValue(response.body());
-                    } else {
-                        AiChatResponse errorResponse = new AiChatResponse();
-                        errorResponse.setSuccess(false);
-                        errorResponse.setMessage("Error communicating with AI service. Code: " + response.code());
-                        result.setValue(errorResponse);
+        apiService.generateContent(API_KEY, requestBody).enqueue(new Callback<com.google.gson.JsonObject>() {
+            @Override
+            public void onResponse(Call<com.google.gson.JsonObject> call, Response<com.google.gson.JsonObject> response) {
+                AiChatResponse aiResponse = new AiChatResponse();
+                aiResponse.setConversationId(conversationId);
+                if (response.isSuccessful() && response.body() != null) {
+                    try {
+                        String text = response.body()
+                            .getAsJsonArray("candidates").get(0).getAsJsonObject()
+                            .getAsJsonObject("content")
+                            .getAsJsonArray("parts").get(0).getAsJsonObject()
+                            .get("text").getAsString();
+                            
+                        aiResponse.setSuccess(true);
+                        aiResponse.setMessage(text);
+                    } catch (Exception e) {
+                        aiResponse.setSuccess(false);
+                        aiResponse.setMessage("Error parsing AI response.");
                     }
+                } else {
+                    aiResponse.setSuccess(false);
+                    aiResponse.setMessage("Error communicating with AI service. Code: " + response.code());
                 }
+                result.setValue(aiResponse);
+            }
 
-                @Override
-                public void onFailure(Call<AiChatResponse> call, Throwable t) {
-                    AiChatResponse errorResponse = new AiChatResponse();
-                    errorResponse.setSuccess(false);
-                    errorResponse.setMessage("Couldn't connect to the AI service. Please check your internet connection and try again.");
-                    result.setValue(errorResponse);
-                }
-            });
-        }).addOnFailureListener(e -> {
-            AiChatResponse errorResponse = new AiChatResponse();
-            errorResponse.setSuccess(false);
-            errorResponse.setMessage("Authentication failed. Please login again.");
-            result.setValue(errorResponse);
+            @Override
+            public void onFailure(Call<com.google.gson.JsonObject> call, Throwable t) {
+                AiChatResponse errorResponse = new AiChatResponse();
+                errorResponse.setSuccess(false);
+                errorResponse.setMessage("Couldn't connect to the AI service. Please check your internet connection.");
+                result.setValue(errorResponse);
+            }
         });
 
         return result;

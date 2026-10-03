@@ -26,8 +26,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="Book Cover"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_book"
-                app:tint="@color/divider" />
+                android:src="@drawable/ic_book" />
                 
             <View
                 android:layout_width="match_parent"

@@ -40,8 +40,7 @@
                     android:layout_gravity="center"
                     android:contentDescription="Book Cover"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_book"
-                    app:tint="@color/divider" />
+                    android:src="@drawable/ic_book" />
             </FrameLayout>
 
             <androidx.appcompat.widget.Toolbar

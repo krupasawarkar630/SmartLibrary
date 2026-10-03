@@ -15,9 +15,9 @@
     <application
         android:name=".SmartLibraryApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_library_logo"
+        android:icon="@drawable/ic_user_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_library_logo"
+        android:roundIcon="@drawable/ic_user_logo"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:windowSoftInputMode="adjustResize"
@@ -36,6 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.OnboardingActivity"
+            android:exported="false" />
 
         <activity
             android:name=".activities.LoginActivity"
@@ -113,6 +117,7 @@
 
         <activity
             android:name=".activities.AiAssistantActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
     </application>

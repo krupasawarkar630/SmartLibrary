@@ -150,10 +150,12 @@ public class FirebaseManager {
         mDatabase.child("books").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                // Force update books to apply new OpenLibrary images
+                seedBooks();
+                
                 if (!snapshot.exists() || snapshot.getChildrenCount() == 0) {
                     seedLibraries();
                     seedQuizzes();
-                    seedBooks();
                 }
             }
             @Override
@@ -163,16 +165,16 @@ public class FirebaseManager {
 
     private void seedBooks() {
         Book[] books = {
-            new Book("BK_001", "Think Like a Monk", "Jay Shetty", "Personal Development", "9781982134488", "Simon & Schuster", 2020, 5, 3, "Train your mind for peace and purpose every day.", "https://m.media-amazon.com/images/I/81s6DUyQCZL._AC_UF1000,1000_QL80_.jpg", "LIB_MAIN", 4.8f),
-            new Book("BK_002", "Ikigai", "Héctor García", "Philosophy & Religion", "9780143130727", "Penguin Books", 2016, 8, 5, "The Japanese secret to a long and happy life.", "https://m.media-amazon.com/images/I/814L+vq01mL._AC_UF1000,1000_QL80_.jpg", "LIB_MAIN", 4.7f),
-            new Book("BK_003", "The Power of Moments", "Chip Heath", "Business", "9781501147760", "Simon & Schuster", 2017, 4, 2, "Why certain experiences have extraordinary impact.", "https://m.media-amazon.com/images/I/81a+q8lHh2L._AC_UF1000,1000_QL80_.jpg", "LIB_SCIENCE", 4.6f),
-            new Book("BK_004", "The Road Less Traveled", "M. Scott Peck", "Psychology", "9780743243155", "Touchstone", 1978, 3, 1, "A new psychology of love, traditional values and spiritual growth.", "https://m.media-amazon.com/images/I/71oO4c+-O4L._AC_UF1000,1000_QL80_.jpg", "LIB_MAIN", 4.5f),
-            new Book("BK_005", "Emotional Blackmail", "Susan Forward", "Psychology", "9780060928972", "Harper Paperbacks", 1997, 2, 0, "When the people in your life use fear, obligation, and guilt to manipulate you.", "https://m.media-amazon.com/images/I/81xU9d4qHwL._AC_UF1000,1000_QL80_.jpg", "LIB_NORTH", 4.4f),
-            new Book("BK_006", "Presenting to Win", "Jerry Weissman", "Marketing", "9780130464132", "FT Press", 2008, 6, 4, "The art of telling your story to get results.", "https://m.media-amazon.com/images/I/61k1q3lU43L._AC_UF1000,1000_QL80_.jpg", "LIB_SCIENCE", 4.6f),
-            new Book("BK_007", "The Art of Letting Go", "Nick Trenton", "Personal Development", "9781954182851", "PKCS Publishing", 2021, 5, 5, "Stop overthinking, find emotional peace, and master detachment.", "https://m.media-amazon.com/images/I/71z+q5Kk+dL._AC_UF1000,1000_QL80_.jpg", "LIB_MAIN", 4.9f),
-            new Book("BK_008", "A Girl to Remember", "Ajay K. Pandey", "Fiction", "9789387022379", "Srishti Publishers", 2018, 7, 6, "An inspiring emotional romance about love, destiny and memory.", "https://m.media-amazon.com/images/I/71T1y7-U-6L._AC_UF1000,1000_QL80_.jpg", "LIB_MAIN", 4.7f),
-            new Book("BK_009", "Atomic Habits", "James Clear", "Personal Development", "9780735211292", "Avery", 2018, 10, 8, "An easy & proven way to build good habits & break bad ones.", "https://m.media-amazon.com/images/I/81YkqyaFVEL._AC_UF1000,1000_QL80_.jpg", "LIB_MAIN", 4.95f),
-            new Book("BK_010", "Deep Work", "Cal Newport", "Parenting & Education", "9781455586691", "Grand Central Publishing", 2016, 4, 2, "Rules for focused success in a distracted world.", "https://m.media-amazon.com/images/I/81Pb-4Bf7NL._AC_UF1000,1000_QL80_.jpg", "LIB_SCIENCE", 4.85f)
+            new Book("BK_001", "Think Like a Monk", "Jay Shetty", "Personal Development", "9781982134488", "Simon & Schuster", 2020, 5, 3, "Train your mind for peace and purpose every day.", "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=1000&auto=format&fit=crop", "LIB_MAIN", 4.8f),
+            new Book("BK_002", "Ikigai", "Héctor García", "Philosophy & Religion", "9780143130727", "Penguin Books", 2016, 8, 5, "The Japanese secret to a long and happy life.", "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1000&auto=format&fit=crop", "LIB_MAIN", 4.7f),
+            new Book("BK_003", "The Power of Moments", "Chip Heath", "Business", "9781501147760", "Simon & Schuster", 2017, 4, 2, "Why certain experiences have extraordinary impact.", "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1000&auto=format&fit=crop", "LIB_SCIENCE", 4.6f),
+            new Book("BK_004", "The Road Less Traveled", "M. Scott Peck", "Psychology", "9780743243155", "Touchstone", 1978, 3, 1, "A new psychology of love, traditional values and spiritual growth.", "https://images.unsplash.com/photo-1476275466078-4007374efac4?q=80&w=1000&auto=format&fit=crop", "LIB_MAIN", 4.5f),
+            new Book("BK_005", "Emotional Blackmail", "Susan Forward", "Psychology", "9780060928972", "Harper Paperbacks", 1997, 2, 0, "When the people in your life use fear, obligation, and guilt to manipulate you.", "https://images.unsplash.com/photo-1511556820780-d912e42b4980?q=80&w=1000&auto=format&fit=crop", "LIB_NORTH", 4.4f),
+            new Book("BK_006", "Presenting to Win", "Jerry Weissman", "Marketing", "9780130464132", "FT Press", 2008, 6, 4, "The art of telling your story to get results.", "https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1000&auto=format&fit=crop", "LIB_SCIENCE", 4.6f),
+            new Book("BK_007", "The Art of Letting Go", "Nick Trenton", "Personal Development", "9781954182851", "PKCS Publishing", 2021, 5, 5, "Stop overthinking, find emotional peace, and master detachment.", "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1000&auto=format&fit=crop", "LIB_MAIN", 4.9f),
+            new Book("BK_008", "A Girl to Remember", "Ajay K. Pandey", "Fiction", "9789387022379", "Srishti Publishers", 2018, 7, 6, "An inspiring emotional romance about love, destiny and memory.", "https://images.unsplash.com/photo-1474932430478-367d16b99031?q=80&w=1000&auto=format&fit=crop", "LIB_MAIN", 4.7f),
+            new Book("BK_009", "Atomic Habits", "James Clear", "Personal Development", "9780735211292", "Avery", 2018, 10, 8, "An easy & proven way to build good habits & break bad ones.", "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1000&auto=format&fit=crop", "LIB_MAIN", 4.95f),
+            new Book("BK_010", "Deep Work", "Cal Newport", "Parenting & Education", "9781455586691", "Grand Central Publishing", 2016, 4, 2, "Rules for focused success in a distracted world.", "https://images.unsplash.com/photo-1522881451255-f59ad836fdf8?q=80&w=1000&auto=format&fit=crop", "LIB_SCIENCE", 4.85f)
         };
         
         books[0].setFloor("1st Floor"); books[0].setRoom("Self-Help Room"); books[0].setSection("A"); books[0].setShelf("SHELF_101"); books[0].setShelfNumber("01");

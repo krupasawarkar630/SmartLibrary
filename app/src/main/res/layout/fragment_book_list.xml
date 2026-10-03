@@ -6,6 +6,26 @@
     android:orientation="vertical"
     android:background="@color/background">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Explore Catalog"
+        android:textColor="@color/text_primary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp"
+        android:text="Search books, scan QR codes, and filter by topic."
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
+
     <!-- Search & QR Scan Card -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ic_animated_logo_vector">
+    <target
+        android:name="page_left"
+        android:animation="@animator/draw_path" />
+    <target
+        android:name="page_right"
+        android:animation="@animator/draw_path" />
+    <target
+        android:name="bookmark"
+        android:animation="@animator/fade_in_slide_down" />
+</animated-vector>

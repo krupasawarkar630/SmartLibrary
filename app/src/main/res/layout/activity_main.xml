@@ -42,8 +42,8 @@
             android:layout_gravity="bottom"
             android:background="@color/surface"
             app:elevation="8dp"
-            app:itemIconTint="@color/primary"
-            app:itemTextColor="@color/primary"
+            app:itemIconTint="@color/bottom_nav_item_color"
+            app:itemTextColor="@color/bottom_nav_item_color"
             app:menu="@menu/bottom_nav_menu" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -55,7 +55,7 @@
         android:layout_gravity="start"
         android:background="@color/surface"
         app:headerLayout="@layout/nav_header_main"
-        app:itemIconTint="@color/accent"
+        app:itemIconTint="@color/bottom_nav_item_color"
         app:itemTextColor="@color/text_primary"
         app:menu="@menu/drawer_menu" />
 

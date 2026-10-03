@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Palette: Dark Mode -->
-    <color name="primary">#38BDF8</color>
-    <color name="primary_dark">#0F172A</color>
-    <color name="primary_light">#1E293B</color>
+    <!-- Warm Library Dark Theme -->
+    <color name="primary">#55B8AF</color>
+    <color name="primary_dark">#6AC8BF</color> <!-- Hover state -->
+    <color name="primary_light">#203B37</color>
     
-    <!-- Accent Palette -->
-    <color name="accent">#38BDF8</color>
-    <color name="accent_dark">#0284C7</color>
-    <color name="accent_light">#7DD3FC</color>
+    <color name="accent">#D5A65B</color>
+    <color name="accent_dark">#B78C47</color>
+    <color name="accent_light">#203B37</color> <!-- Soft accent -->
     
     <!-- Status Colors -->
-    <color name="success">#34D399</color>
-    <color name="success_bg">#064E3B</color>
-    <color name="warning">#FBBF24</color>
-    <color name="warning_bg">#78350F</color>
-    <color name="danger">#F87171</color>
-    <color name="danger_bg">#7F1D1D</color>
+    <color name="success">#68B895</color>
+    <color name="success_bg">#182B24</color>
+    <color name="warning">#D5A65B</color>
+    <color name="warning_bg">#312613</color>
+    <color name="danger">#E27A7A</color>
+    <color name="danger_bg">#341B1B</color>
 
     <!-- Neutral Colors -->
-    <color name="background">#0F172A</color>
-    <color name="surface">#1E293B</color>
-    <color name="text_primary">#F8FAFC</color>
-    <color name="text_secondary">#94A3B8</color>
-    <color name="text_muted">#64748B</color>
-    <color name="divider">#334155</color>
-    <color name="card_stroke">#475569</color>
+    <color name="background">#111817</color>
+    <color name="surface">#18211F</color>
+    <color name="elevated_surface">#202B28</color>
+    <color name="text_primary">#F1F3EF</color>
+    <color name="text_secondary">#A8B3AF</color>
+    <color name="text_muted">#737F7B</color>
+    <color name="divider">#2C3835</color>
+    <color name="card_stroke">#2C3835</color>
     
     <!-- White / Transparent -->
     <color name="white">#FFFFFF</color>
