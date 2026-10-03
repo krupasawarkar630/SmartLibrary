@@ -110,58 +110,165 @@
                 app:tint="@color/primary" />
         </LinearLayout>
 
-        <!-- AI ASSISTANT BANNER (Editorial Style) -->
-        <LinearLayout
-            android:id="@+id/cardAiAssistant"
+        <!-- PROMO SLIDER -->
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/bg_rating_chip"
-            android:orientation="horizontal"
-            android:padding="20dp"
-            android:gravity="center_vertical">
+            android:layout_marginTop="24dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="24dp"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+
+                <!-- BANNER 1: AI ASSISTANT -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bannerAiAssistant"
+                    android:layout_width="300dp"
+                    android:layout_height="140dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/primary"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+                    
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+                        
+                        <TextView
+                            android:id="@+id/tvBanner1Tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="NEW FEATURE"
+                            android:textColor="#A8D8D6"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+                            
+                        <TextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvBanner1Tag"
+                            android:layout_marginTop="8dp"
+                            android:text="Meet your new AI Librarian"
+                            android:textColor="@color/surface"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                            
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/ic_user_logo"
+                            app:tint="#A8D8D6" />
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- BANNER 2: NEW ARRIVALS -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bannerNewArrivals"
+                    android:layout_width="300dp"
+                    android:layout_height="140dp"
+                    android:layout_marginEnd="16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/accent"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+                    
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+                        
+                        <TextView
+                            android:id="@+id/tvBanner2Tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="WEEKLY HIGHLIGHTS"
+                            android:textColor="#FFE5C4"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+                            
+                        <TextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvBanner2Tag"
+                            android:layout_marginTop="8dp"
+                            android:text="Explore this week's most read books"
+                            android:textColor="@color/surface"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                            
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/ic_book"
+                            app:tint="#FFE5C4" />
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- BANNER 3: DIGITAL PASS -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="300dp"
+                    android:layout_height="140dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#3D8068"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+                    
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="20dp">
+                        
+                        <TextView
+                            android:id="@+id/tvBanner3Tag"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="QUICK ACCESS"
+                            android:textColor="#A2DBC2"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textAllCaps="true" />
+                            
+                        <TextView
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tvBanner3Tag"
+                            android:layout_marginTop="8dp"
+                            android:text="Scan QR codes for instant checkout"
+                            android:textColor="@color/surface"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                            
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="64dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+                            android:src="@drawable/ic_qr_scan"
+                            app:tint="#A2DBC2" />
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
                 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Curated Recommendations"
-                    android:textColor="@color/accent"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textAllCaps="true"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="Ask the Librarian AI"
-                    android:textColor="@color/text_primary"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="Discover your next great read tailored to your taste."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp" />
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginStart="16dp"
-                android:src="@drawable/ic_search"
-                app:tint="@color/primary" />
-        </LinearLayout>
+        </HorizontalScrollView>
 
         <!-- CONTINUE READING (Minimal) -->
         <LinearLayout
