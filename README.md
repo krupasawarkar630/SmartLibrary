@@ -34,44 +34,52 @@ Welcome to the **Smart Library Management System** — a seamless, editorial-sty
 
 ## ✨ Key Features
 
-- 🎨 **Editorial UI/UX ("Ivory Library")**: Designed with a premium bookstore aesthetic, utilizing Warm Ivory backgrounds, Deep Indigo accents, and beautiful typography.
-- 🤖 **Real-Time AI Assistant**: A Node.js backend integrated with OpenAI (or OpenRouter) provides context-aware book recommendations and library assistance directly within the mobile app.
-- 🔐 **Firebase Integration**: Secure user authentication, Realtime Database for accurate book inventory, and cloud syncing.
-- 📷 **QR Code Scanner**: Scan QR codes for rapid book checkouts and physical library navigation.
-- 📚 **Smart Book Tracking**: Manage borrowed books, view availability in real-time, and track pending requests.
+- 🎨 **Premium UI/UX ("Ivory Library")**: Designed with a clean bookstore aesthetic, utilizing Warm Ivory backgrounds, Deep Teal accents, and modern typography.
+- 🤖 **Gemini AI Assistant**: Direct Retrofit integration with the Google Gemini 1.5 Flash API for context-aware book recommendations and chat.
+- 🔐 **Firebase Ecosystem**: 
+  - **Firebase Auth** (Email/Password & Google Sign-In via Play Services)
+  - **Firestore & Realtime Database** for synchronized book tracking and user profiles.
+  - **Firebase Cloud Messaging (FCM)** for push notifications.
+- 📷 **ZXing QR Code Scanner**: Native embedded QR code scanning to handle book checkouts and rapid catalog searches.
+- 🗺️ **Google Maps Integration**: Play Services Location and Maps API for navigating to physical library branches.
+- 📚 **Smart Book Tracking**: Manage borrowed books, view availability in real-time, and track pending requests directly from the home dashboard.
 
 ---
 
 ## 🏗 Architecture Diagram
 
-Our architecture leverages a direct connection to the Gemini AI API for intelligent chat, while using Firebase for secure database syncing.
+Our architecture leverages a direct connection to the Gemini AI API for intelligent chat, while using Firebase for secure database syncing and Google Play Services for Maps/Auth.
 
 ```mermaid
 graph TD
-    subgraph Client ["Client Side"]
+    subgraph Client ["Client Side (Android)"]
         A[Android App <br> Java + XML]
     end
     
-    subgraph Database ["Firebase"]
-        C(Firebase Authentication)
-        D(Firebase Realtime Database)
+    subgraph Database ["Firebase Backend"]
+        C(Firebase Auth)
+        D(Firestore & Realtime DB)
+        M(Firebase Messaging)
     end
     
-    subgraph AI ["Google AI Services"]
-        E[Gemini 1.5 Flash API]
+    subgraph Services ["External APIs"]
+        E[Google Gemini 1.5 Flash API]
+        F[Google Maps API]
     end
 
-    A -->|Firebase SDK| C
-    A -->|Firebase SDK| D
+    A -->|SDK| C
+    A -->|SDK| D
+    A -->|SDK| M
     A -->|Retrofit HTTP| E
+    A -->|Play Services| F
     
     classDef client fill:#176B67,stroke:#176B67,stroke-width:2px,color:#fff;
     classDef ai fill:#3D8068,stroke:#3D8068,stroke-width:2px,color:#fff;
     classDef db fill:#C58A3A,stroke:#C58A3A,stroke-width:2px,color:#fff;
     
     class A client;
-    class E ai;
-    class C,D db;
+    class E,F ai;
+    class C,D,M db;
 ```
 
 ---
@@ -79,15 +87,19 @@ graph TD
 ## 🛠 Technology Stack
 
 ### Mobile Frontend
-- **Language**: Java
-- **UI Toolkit**: XML, Material Components for Android
-- **Networking**: Retrofit 2, Glide (Image Loading)
+- **Language**: Java (JDK 17)
+- **UI Toolkit**: XML, Material Components, ConstraintLayout, ViewBinding
+- **Image Loading**: Glide
+- **QR Code Scanning**: ZXing (Zebra Crossing) Android Embedded
+- **Maps**: Google Play Services Maps & Location
 
-### Cloud & Database
-- **Backend-as-a-Service**: Firebase Realtime Database
-- **Authentication**: Firebase Auth (Email/Password & Google Sign-In)
+### Cloud & Database (Firebase)
+- **Database**: Firebase Firestore & Firebase Realtime Database
+- **Authentication**: Firebase Auth & Google Sign-In
+- **Notifications**: Firebase Cloud Messaging (FCM)
 
 ### AI Integration
+- **Networking**: Retrofit 2 & Gson Converter
 - **Intelligence**: Google Gemini 1.5 Flash API (Direct REST Integration)
 
 ---
@@ -98,10 +110,14 @@ graph TD
 1. Clone the repository and open the project in **Android Studio**.
 2. Go to [Firebase Console](https://console.firebase.google.com/), create a project, and register this Android app (`com.example.smartlibrary`).
 3. Download the `google-services.json` file and place it in the `app/` directory.
-4. Enable **Authentication** (Email & Google) and **Realtime Database** in Firebase.
+4. Enable **Authentication** (Email & Google), **Firestore**, and **Realtime Database** in Firebase.
+5. Provide your Google Maps API Key in `local.properties`:
+   ```properties
+   MAPS_API_KEY=your_maps_api_key_here
+   ```
 
-### 2. AI & Environment Variables Setup (.env)
-The AI assistant runs directly in the app, but you must supply your own Google Gemini API key.
+### 2. AI & Environment Variables Setup
+The AI assistant runs directly in the app via Retrofit, but you must supply your own Google Gemini API key.
 
 1. Open `app/src/main/java/com/example/smartlibrary/ai/AiRepository.java`.
 2. Find the line: `private static final String API_KEY = "YOUR_GEMINI_API_KEY_HERE";`
@@ -110,7 +126,7 @@ The AI assistant runs directly in the app, but you must supply your own Google G
 > **⚠️ Security Warning:** Do NOT commit your API key to GitHub. It has been purposefully omitted from the repository.
 
 *(Optional Backend Setup)*
-If you are planning to expand the backend folder (e.g. for Supabase):
+If you are planning to use the node `backend/` folder (e.g. for Supabase or legacy features):
 1. Navigate to the `backend/` directory.
 2. Copy `.env.example` to a new file named `.env`.
 3. Fill in your credentials:
